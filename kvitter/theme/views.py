@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
-
-def index(request):
-    return HttpResponse("Hello, world.")
+# Create your views here.
+def frontpage(request):
+    return render(request, 'theme/frontpage.html')
