@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'theme',
     'useraccounts',
+    'kvitter_messages',
 )
 
 MIDDLEWARE_CLASSES = (
