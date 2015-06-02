@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'theme',
     'useraccounts',
     'kvitter_messages',
+    
 )
 
 MIDDLEWARE_CLASSES = (
