@@ -6,6 +6,7 @@
         <nav>
           <ul class="nav nav-pills pull-right">
 
+            <li role="presentation"><a href="{% url 'message_listing' %}">Meldinger</a>
             <li role="presentation" class="active"><a href="{% url 'frontpage' %}">Home</a></li>
               {% if user.is_anonymous %}
             <li role="presentation"><a href="{% url 'user_login'%}">Login</a></li>

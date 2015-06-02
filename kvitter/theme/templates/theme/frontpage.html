@@ -1,4 +1,5 @@
 {% extends 'theme/base.html' %}
+
 {% block pagecontent %}
 {% if user.is_anonymous %}
 <div class="jumbotron">
@@ -6,8 +7,45 @@
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <p><a class="btn btn-lg btn-success" href="{% url 'user_register'%}" role="button">Registrer deg i dag!</a></p>
       </div>
-      {% endif %}
+      {% else %}
+      
 
- 
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://galaxybackground.com/wp-content/uploads/2014/09/tumblr_m9bh4qjsXF1rcw350o1_1280.jpg" alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://galaxybackground.com/wp-content/uploads/2014/09/tumblr_m9bh4qjsXF1rcw350o1_1280.jpg" alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="http://galaxybackground.com/wp-content/uploads/2014/09/tumblr_m9bh4qjsXF1rcw350o1_1280.jpg" alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+
+     
 
 {% endblock %}

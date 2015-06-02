@@ -1,16 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
 
 class Message(models.Model):
-    user = models.ForeignKey(User, related_name='messages')
     message = models.TextField()
-    likes = models.PositiveIntegerField(default=0)
-    created_by = models.ForeignKey(User, related_name="created_messages")
     created_datetime = models.DateTimeField()
+    created_by = models.ForeignKey(User, related_name="created_message")
+    likes = models.PositiveIntegerField(default=0)  
 
     def __unicode__(self):
-        return u'%s' % self.note
-
+        return u'%s' % self.message
+  
     class Meta:
         ordering = ['-id']
