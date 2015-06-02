@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth import authenticate, login, logout  
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -11,12 +11,9 @@ def user_login(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            # redirect to a success page.
             return redirect('frontpage')
         else:
-            # render login again, but display error message
             context['login_failed'] = True
-    # request.method == 'GET':
     return render(request, 'useraccounts/login.html', context)
 
 def user_logout(request):
@@ -38,4 +35,15 @@ def user_register(request):
 
 
 def user_account(request):
-    return render(request, 'useraccounts/account.html')
+    context = {}
+    if request.method == "POST":
+        user = request.user
+        if User.objects.filter(email=request.POST['email']).exclude(pk=user.id).exists():
+            context['email_exist'] = True
+        else:
+            user.first_name = request.POST.get('firstname')
+            user.last_name = request.POST.get('lastname')
+            user.email = request.POST.get('email')
+            user.save()
+            context['user_saved_successfully'] = True
+    return render(request, 'useraccounts/account.html', context)
