@@ -7,6 +7,11 @@ from django.contrib.auth.decorators import login_required
 
 from kvitter_messages.models import Message
 
+def message_details(request, post_id):
+    message = Message.objects.get(pk=post_id)
+    context = {'message': message}
+    return render(request, 'messages/message_details.html', context)
+
 
 def message_listing(request):
     if request.method == 'POST':
@@ -28,15 +33,10 @@ def message_listing(request):
     except EmptyPage:
         messages = paginator.page(paginator.num_pages)
 
-    context = {
-        'messages': messages,
-        }
+    context = {'messages': messages,}
     return render(request, 'messages/message_listing.html', context)
 
 
-def message_details(request, post_id):
-    message = Message.objects.get(pk=post_id)
-    context = {'message': message}
-    return render(request, 'messages/message_details.html', context)    
+    
 
 
