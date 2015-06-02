@@ -1,9 +1,74 @@
-{% extends 'theme/base.html' %}
-{% block pagecontent %} 
+{% extends 'useraccounts/base.html' %}
+{% block container %}
 
-<p>
-På dennne siden vil du ha muligheten til å redigere på din personlige informasjon.
-</p>
 
-{%endblock%}
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted">Kvitter</h3>
+        <nav>
+          <ul class="nav nav-pills pull-right">
 
+            <li role="presentation"><a href="{% url 'message_listing' %}">Meldinger</a>
+            <li role="presentation" class="active"><a href="{% url 'frontpage' %}">Home</a></li>
+              {% if user.is_anonymous %}
+            <li role="presentation"><a href="{% url 'user_login'%}">Login</a></li>
+            
+          </ul>
+        </nav>
+      
+      </div>
+      </div>
+            
+    {% else %}
+    <li class="dropdown">
+       <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <span class="caret"></span></a>
+         <ul class="dropdown-menu" role="menu">
+           <li><a href="{% url 'user_account'%}">Account</a></li>
+           <li class="divider"></li>
+         <li><a href="{% url 'user_logout' %}">Logout</a></li>
+       </ul>
+    </li>
+    {% endif %}
+         
+        </div>
+    
+        <form><h3>Profil informasjon</h3>
+            <h6><b>Username</b> {{ user.username }}<h6>
+            <h6><b>First name</b> {{ user.first_name }}<h6>
+            <h6><b>Last name</b> {{ user.last_name }}<h6>
+            <h6><b>Email</b> {{ user.email }} </p><h6>
+        </form>
+
+            <hr>
+
+            <h3>Endre profil</h3>
+
+            <form method="POST" action="{% url 'user_account' %}">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="inputFirstName">First Name</label>
+                <input type="text" class="form-control" name="firstname" placeholder="First name" id="inputFirstName" value="{{ user.first_name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputLastName">Last Name</label>
+                <input type="text" class="form-control" name="lastname" placeholder="Last name" id="inputLastName" value="{{ user.last_name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail">Email Address</label>
+                <input type="email" class="form-control" name="email" placeholder="Email@Adress.com" id="inputEmail" value="{{ user.email }}" required>
+            </div>
+
+            <button type="submit" class="btn btn-info">Lagre</button>
+
+            
+
+            {% if user_saved_successfully %}
+                <div class="alert alert-success"> 
+                    Endringene dine er lagret  
+                </div>
+            {% endif %}
+
+{% endblock %}
