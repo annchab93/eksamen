@@ -5,7 +5,9 @@ class Message(models.Model):
     message = models.TextField()
     created_datetime = models.DateTimeField()
     created_by = models.ForeignKey(User, related_name="created_message")
-    likes = models.PositiveIntegerField(default=0)  
+    likes = models.PositiveIntegerField(default=0)
+
+
 
     def __unicode__(self):
         return u'%s' % self.message
