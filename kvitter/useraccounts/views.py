@@ -33,7 +33,7 @@ def user_register(request):
         context['user_saved_successfully'] = True
     return render(request, 'useraccounts/register.html', context)
 
-
+# for editing account information on user
 def user_account(request):
     context = {}
     if request.method == "POST":
