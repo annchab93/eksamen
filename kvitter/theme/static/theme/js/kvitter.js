@@ -1,15 +1,17 @@
-$(document).ready(function(){
 
+$(document).ready(function(){
+ 
     $(".add-likes-link").click(function(event) {
         event.preventDefault();
         var message_id = $(this).data("messageid");
         var likes_element_id = "#id-likes-for-message-" + message_id;
         $.ajax({
-            url: "/kvitter_messages/" + message_id + "/add_likes"
-        })
-        .done(function(data) {
-            var likes_updated = data['likes_updated'];
-            $(likes_element_id).html(likes_updated);
+           url: "/add_likes_url/" + message_id + "/add_likes"
+       })
+       .done(function(data) {
+        var likes_updated = data['likes_updated'];
+        var likes_element_id = "#id-likes-for-message-" + message_id;
+        $(likes_element_id).html(likes_updated);
         });
     });
 });
