@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('message', models.TextField()),
                 ('created_datetime', models.DateTimeField()),
+                ('likes', models.PositiveIntegerField(default=0)),
                 ('created_by', models.ForeignKey(related_name='created_message', to=settings.AUTH_USER_MODEL)),
 
             ],
