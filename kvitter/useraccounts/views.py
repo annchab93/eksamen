@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.shortcuts import redirect
 
+#login
 def user_login(request):
     context = {}
     if request.method == 'POST':
@@ -15,11 +16,11 @@ def user_login(request):
         else:
             context['login_failed'] = True
     return render(request, 'useraccounts/login.html', context)
-
+#logout
 def user_logout(request):
     logout(request)
     return redirect('frontpage')
-
+#register
 def user_register(request):
     context = {}
     if request.method == "POST":

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+#details on messages
+
 class Message(models.Model):
     message = models.TextField()
     created_datetime = models.DateTimeField()
