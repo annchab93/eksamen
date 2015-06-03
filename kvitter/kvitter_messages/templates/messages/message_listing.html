@@ -33,10 +33,6 @@
     </div>
 {% endif %}
 
-    
-
-
-       
     <ul>
         {% for message in messages %}
             <div class="list-group">
@@ -46,35 +42,30 @@
                 <a href="{% url 'message_details' message.id %}" class="list-group-item">
                 <p>{{ message.message }}</p></a>
             
-                <button type="button" class="add-likes-link btn btn-default" aria-label="Like" data-messageid="{{ message.id }}">
-                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> Like </span>
-                    
-                        
-                    </a>
-
+                <button type="button" class="add-likes-link btn btn-default"  aria-label="Like" data-messageid="{{ message.id }}">
+                  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> Like </span>
             
-                </div>             
+                  <span id="id-likes-for-message-{{ message.id }}"> {{ message.likes }}</span>
+                </button>
+            </div>             
         {% endfor %}
     </ul>
 
-
-   
-    
     <nav>
         <ul class="pager">
             {% if messages.has_previous %}
                 <li class="previous">
                     <a href="?page={{ messages.previous_page_number }}">
-                    <span aria-hidden="true">&larr;</span> Previous
-                    </a>
-                </li>
+                        <span aria-hidden="true">&larr;</span> Previous
+                        </a>
+                        </li>
             
             {% endif %}
-            <li>
-                <span class="current">
-                    Page {{ messages.number }} of {{ messages.paginator.num_pages }}
-                </span>
-            </li>
+                        <li>
+                        <span class="current">
+                        Page {{ messages.number }} of {{ messages.paginator.num_pages }}
+                    </span>
+                </li>
             {% if messages.has_next %}
                 <li class="next">
                     <a href="?page={{ messages.next_page_number }}">
@@ -85,6 +76,9 @@
         </ul>
     </nav> 
 
+
+<input type="hidden" id="add_likes_url" 
+value="/kvitter_messages/{{ message.id }}/add_likes">
   
 
      
