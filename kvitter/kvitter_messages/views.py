@@ -7,21 +7,22 @@ from django.contrib.auth.decorators import login_required
 
 from kvitter_messages.models import Message
 
+#details on messages
 def message_details(request, post_id):
     message = Message.objects.get(pk=post_id)
     context = {'message': message}
     return render(request, 'messages/message_details.html', context)
 
-
+#new messages
 def message_listing(request):
     if request.method == 'POST':
         new_message = request.POST.get('new_message')
         if  new_message:
-            message = Message()
-            message.message = new_message
-            message.created_datetime = timezone.now()
-            message.created_by = request.user
-            message.save()
+            postMessage = Message()
+            postMessage.message = new_message
+            postMessage.created_datetime = timezone.now()
+            postMessage.created_by = request.user
+            postMessage.save()
   
     messages = Message.objects.all()
     page = request.GET.get('page')
@@ -36,7 +37,7 @@ def message_listing(request):
     context = {'messages': messages,}
     return render(request, 'messages/message_listing.html', context)
 
-
+#likes are not working...
 def add_likes(request, message_id):
     message = Message.objects.get(pk=message_id)
     message.likes = message.likes + 1
