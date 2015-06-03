@@ -2,10 +2,17 @@
 {% block subheader %}Meldings detaljer details{% endblock %}
 {% block pagecontent %}
 
-    <div class="row">
-        <div class="col-sm-12">
-           
-            <h2>Detaljer om kvitts {{ message.id }}</h2> 
+  
+        
+          
+
+          <div class="panel panel-info">
+            <div class="panel-heading">
+            
+            <h2 class="panel-title">Detaljer om kvitts {{ message.id }}</h2>
+
+            </div> 
+            <div class="panel-body">
             <table class="table">
                 <thead>
                     <tr>
@@ -16,6 +23,7 @@
                         <th>Likes</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     <tr>
                         <td>{{ message.id }}</td>
@@ -31,6 +39,7 @@
 
         </div>
     </div>
+
 
 {% endblock %}
 
