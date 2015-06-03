@@ -44,10 +44,20 @@
                 Kvitt skrevet av {{ message.created_by }}
                 </a>
                 <a href="{% url 'message_details' message.id %}" class="list-group-item">
-                <p>{{ message.message }}</p></a><p>Likes</p>
-            </div>               
+                <p>{{ message.message }}</p></a>
+            
+                <button type="button" class="add-likes-link btn btn-default" aria-label="Like" data-messageid="{{ message.id }}">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"> Like </span>
+                    
+                        
+                    </a>
+
+            
+                </div>             
         {% endfor %}
     </ul>
+
+
    
     
     <nav>
@@ -74,6 +84,8 @@
             {% endif %}
         </ul>
     </nav> 
+
+  
 
      
 {% endblock %}
