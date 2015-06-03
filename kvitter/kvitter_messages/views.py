@@ -37,6 +37,10 @@ def message_listing(request):
     return render(request, 'messages/message_listing.html', context)
 
 
-    
-
+def add_likes(request, message_id):
+    message = Message.objects.get(pk=message_id)
+    message.likes = message.likes + 1
+    message.save()
+    data = {'likes_updated': message.likes}
+    return JsonResponse(data)
 
